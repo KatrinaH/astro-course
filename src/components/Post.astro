@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { Image } from 'astro:assets'
+
+type Props = {
+  post: CollectionEntry<"posts">
+}
+
+const { post } = Astro.props;
+console.log(post.data.image)
+---
+
+<article>
+  <a href={`/blog/${post.slug}`}>
+  <Image
+      src={post.data.image}
+      alt={post.data.title}
+      width={600}
+      height={600 / 1.5}
+      format="webp"
+      class="rounded-2xl shadow-xl mb-6 aspect-thumbnail object-cover"
+  />
+</a>
+<h2>{post.data.title}</h2>
